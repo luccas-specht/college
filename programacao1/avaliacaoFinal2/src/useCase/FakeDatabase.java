@@ -1,25 +1,25 @@
 package useCase;
 
-import domain.Projeto;
+import domain.Project;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public abstract class FakeDatabase {
-    private static final List<Projeto> projects = new ArrayList<>();
-    public static void save(Projeto projeto) {
-        projects.add(projeto);
+    private static final List<Project> projects = new ArrayList<>();
+    public static void save(Project project) {
+        projects.add(project);
     }
 
-    public static Optional<Projeto> findByProjectName(String projectName) {
+    public static Optional<Project> findByProjectName(String projectName) {
         return projects.stream()
-                .filter(element -> element.getNome().equalsIgnoreCase(projectName))
+                .filter(element -> element.getName().equalsIgnoreCase(projectName))
                 .findFirst();
     }
 
     public static void deleteProjectByName(String projectName) {
-        Optional<Projeto> projectFound = findByProjectName(projectName);
+        Optional<Project> projectFound = findByProjectName(projectName);
 
         if (projectFound.isPresent()) {
             projects.remove(projectFound.get());
@@ -30,7 +30,7 @@ public abstract class FakeDatabase {
     }
 
 
-    public static List<Projeto> getAllProjects() {
+    public static List<Project> getAllProjects() {
        return projects;
     }
 }

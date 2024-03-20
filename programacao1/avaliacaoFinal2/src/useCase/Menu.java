@@ -2,8 +2,6 @@ package useCase;
 
 import action.*;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public abstract class Menu {
@@ -23,7 +21,7 @@ public abstract class Menu {
                 "<--------- Menu ---------->\n");
     }
 
-    private static Action createOption(int input) {
+    private static IAction createOption(int input) {
         return switch (input) {
             case OPTION_CREATE_PROJECT -> new CreateProject();
             case OPTION_FIND_PROJECT -> new GetProject();
@@ -33,7 +31,7 @@ public abstract class Menu {
         };
     }
 
-    private static void callAction(Action option) {
+    private static void callAction(IAction option) {
         option.run();
     }
 
@@ -44,7 +42,7 @@ public abstract class Menu {
             displayMenuOptions();
             optionTyped = input.nextInt();
 
-            Action option = createOption(optionTyped);
+            IAction option = createOption(optionTyped);
             callAction(option);
         } while (optionTyped != OPTION_EXIT);
     }

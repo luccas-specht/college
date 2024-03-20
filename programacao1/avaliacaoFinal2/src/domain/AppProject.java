@@ -1,12 +1,12 @@
 package domain;
 
-public class ProjetoAplicativo extends Projeto {
+public class AppProject extends Project implements IProject{
     private String plataforma;
 
     private float tamanho;
 
-    public ProjetoAplicativo(String nome, Nivel nivel, double custo, Gerente gerente, String plataforma, float tamanho) {
-        super(nome, nivel, custo, gerente);
+    public AppProject(String nome, Level level, double custo, Manager manager, String plataforma, float tamanho) {
+        super(nome, level, custo, manager);
         if (tamanho <= 0) {
             throw new RuntimeException("tamanho deve ser maior que zero");
         }
@@ -14,7 +14,7 @@ public class ProjetoAplicativo extends Projeto {
         this.tamanho = tamanho;
     }
 
-    public ProjetoAplicativo() {
+    public AppProject() {
     }
 
     public String getPlataforma() {

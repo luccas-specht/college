@@ -1,17 +1,17 @@
 package action;
 
-import domain.Nivel;
-import domain.Gerente;
-import domain.Projeto;
-import domain.ProjetoWeb;
-import domain.ProjetoAplicativo;
+import domain.Level;
+import domain.Manager;
+import domain.Project;
+import domain.WebProject;
+import domain.AppProject;
 
 import useCase.FakeDatabase;
 import useCase.SingletonScanner;
 
-public class CreateProject implements Action {
-    private Projeto projeto;
-    private Gerente gerente = new Gerente();
+public class CreateProject implements IAction {
+    private Project project;
+    private Manager manager = new Manager();
     public CreateProject() {
     }
 
@@ -19,7 +19,7 @@ public class CreateProject implements Action {
     public void run() {
         System.out.println("----- Qual o nome do gerente? ------");
         String nomeGerente = SingletonScanner.getScanner().next();
-        gerente.setNome(nomeGerente);
+        manager.setName(nomeGerente);
 
         System.out.println("----- Qual o nome do projeto? ------");
         String nomeProjeto = SingletonScanner.getScanner().next();
@@ -47,9 +47,9 @@ public class CreateProject implements Action {
                 System.out.println("----- Qual o bd do projeto? ------");
                 String bdProjeto = SingletonScanner.getScanner().next();
 
-                gerente.setNome(nomeGerente);
-                this.projeto = new ProjetoWeb(nomeProjeto, nivelProjeto == 1 ? Nivel.OPERACIONAL: Nivel.ESTRATEGICO, custoProjeto, gerente, linguagemProjeto, bdProjeto);
-                gerente.setProjeto(projeto);
+                manager.setName(nomeGerente);
+                this.project = new WebProject(nomeProjeto, nivelProjeto == 1 ? Level.OPERATIONAL: Level.STRATEGIC, custoProjeto, manager, linguagemProjeto, bdProjeto);
+                manager.setProject(project);
 
             }
             case 2 -> {
@@ -59,11 +59,11 @@ public class CreateProject implements Action {
                 System.out.println("----- Qual o tamanho do projeto? ------");
                 float tamanhoProjeto = SingletonScanner.getScanner().nextFloat();
 
-                gerente.setNome(nomeGerente);
-                this.projeto = new ProjetoAplicativo(nomeProjeto, nivelProjeto == 1 ? Nivel.OPERACIONAL: Nivel.ESTRATEGICO, custoProjeto, gerente, plataformaProjeto, tamanhoProjeto);
-                gerente.setProjeto(projeto);
+                manager.setName(nomeGerente);
+                this.project = new AppProject(nomeProjeto, nivelProjeto == 1 ? Level.OPERATIONAL: Level.STRATEGIC, custoProjeto, manager, plataformaProjeto, tamanhoProjeto);
+                manager.setProject(project);
             }
         }
-        FakeDatabase.save(projeto);
+        FakeDatabase.save(project);
     }
 }

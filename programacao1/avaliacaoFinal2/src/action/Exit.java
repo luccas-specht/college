@@ -2,7 +2,7 @@ package action;
 
 import useCase.SingletonScanner;
 
-public class Exit implements Action {
+public class Exit implements IAction {
     @Override
     public void run() {
         SingletonScanner.closeScanner();

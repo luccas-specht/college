@@ -1,5 +1,5 @@
 package action;
 
-public interface Action {
+public interface IAction {
     void run();
 }
