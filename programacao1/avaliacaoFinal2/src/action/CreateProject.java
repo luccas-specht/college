@@ -2,7 +2,7 @@ package action;
 
 import domain.*;
 
-import useCase.FakeDatabase;
+import repository.FakeDatabase;
 import useCase.SingletonScanner;
 
 public class CreateProject implements IAction {

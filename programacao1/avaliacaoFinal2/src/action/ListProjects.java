@@ -2,13 +2,17 @@ package action;
 
 import domain.IAppProject;
 import domain.IWebProject;
-import useCase.FakeDatabase;
+import repository.FakeDatabase;
 
 import java.util.List;
 
 public class ListProjects implements IAction {
     private List<IAppProject> appProjects = FakeDatabase.getAppProjects();
     private List<IWebProject> webProjects = FakeDatabase.getWebProjects();
+
+    public ListProjects() {
+
+    }
 
     private void printAppProjects() {
         appProjects.forEach(element -> {

@@ -1,4 +1,4 @@
-package useCase;
+package repository;
 
 import domain.*;
 
