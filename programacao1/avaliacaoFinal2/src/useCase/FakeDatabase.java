@@ -18,23 +18,28 @@ public abstract class FakeDatabase {
         appProjects.add(project);
     }
 
-
     public static <T extends IProject> Optional<T> findProjectByName(String projectName, List<T> projects) {
         return projects.stream()
                 .filter(element -> element.getName().equalsIgnoreCase(projectName))
                 .findFirst();
     }
 
-    public static <T extends IProject> void deleteProjectByName(String projectName, List<T> projects) {
-        Optional<T> projectFound = findProjectByName(projectName, projects);
+    public static void deleteProjectByName(String projectName) {
+        Optional<IAppProject> appProjectFound = FakeDatabase.findProjectByName(projectName, FakeDatabase.getAppProjects());
+        Optional<IWebProject> webProjectFound = FakeDatabase.findProjectByName(projectName, FakeDatabase.getWebProjects());
 
-        projectFound.ifPresent(project -> {
-            projects.remove(project);
-            System.out.println("Projeto removido com sucesso.");
+        appProjectFound.ifPresent(appProject -> {
+            appProjects.remove(appProject);
+            System.out.println("Projeto de aplicativo removido com sucesso.\n");
         });
 
-        if (projectFound.isEmpty()) {
-            System.out.println("Projeto não encontrado.");
+        webProjectFound.ifPresent(webProject -> {
+            webProjects.remove(webProject);
+            System.out.println("Projeto web removido com sucesso.\n");
+        });
+
+        if (appProjectFound.isEmpty() && webProjectFound.isEmpty()) {
+            System.out.println("Projeto não encontrado.\n");
         }
     }
 

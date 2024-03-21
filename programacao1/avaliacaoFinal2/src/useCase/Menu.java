@@ -25,6 +25,7 @@ public abstract class Menu {
         return switch (input) {
             case OPTION_CREATE_PROJECT -> new CreateProject();
             case OPTION_FIND_PROJECT -> new GetProject();
+            case OPTION_DELETE_PROJECT -> new DeleteProject();
             case OPTION_EXIT -> new Exit();
             case OPTION_LIST_PROJECTS -> new ListProjects();
             default -> null;
