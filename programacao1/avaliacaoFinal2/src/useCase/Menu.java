@@ -36,7 +36,7 @@ public abstract class Menu {
         option.run();
     }
 
-    public static void Start(Scanner input) {
+    public static void start(Scanner input) {
         int optionTyped;
 
         do {
