@@ -1,6 +1,6 @@
 package domain;
 
-public class AppProject extends Project implements IProject{
+public class AppProject extends Project implements IAppProject {
     private String plataforma;
 
     private float tamanho;

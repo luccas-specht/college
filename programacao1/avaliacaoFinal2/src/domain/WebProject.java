@@ -1,6 +1,6 @@
 package domain;
 
-public class WebProject extends Project implements IProject{
+public class WebProject extends Project implements IWebProject {
     private String programmingLanguage;
     private String db;
 

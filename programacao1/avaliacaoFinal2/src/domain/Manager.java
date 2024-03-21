@@ -2,7 +2,7 @@ package domain;
 
 public class Manager {
     private String name;
-    private Project project;
+    private IProject project;
 
     public Manager() {
     }
@@ -20,11 +20,11 @@ public class Manager {
         this.name = name;
     }
 
-    public Project getProject() {
+    public IProject getProject() {
         return project;
     }
 
-    public void setProject(Project project) {
+    public void setProject(IProject project) {
         this.project = project;
     }
 }

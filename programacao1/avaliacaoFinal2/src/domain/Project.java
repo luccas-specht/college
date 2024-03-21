@@ -11,7 +11,7 @@ public abstract class Project implements IProject {
 
     public Project(String name, Level level, double cost, Manager manager) {
         if (cost <= 0) {
-            throw new RuntimeException("tamanho deve ser maior que zero");
+            throw new RuntimeException("Custo do projeto deve ser maior que zero");
         }
         this.name = name;
         this.level = level;

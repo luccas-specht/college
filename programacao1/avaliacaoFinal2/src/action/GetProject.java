@@ -1,7 +1,7 @@
 package action;
 
-import domain.Project;
-
+import domain.IAppProject;
+import domain.IWebProject;
 import useCase.FakeDatabase;
 import useCase.SingletonScanner;
 
@@ -16,14 +16,27 @@ public class GetProject implements IAction {
         System.out.println("----- Qual o nome do projeto? ------");
         String projectName = SingletonScanner.getScanner().next();
 
-        Optional<Project> projectFound = FakeDatabase.findByProjectName(projectName);
+        Optional<IAppProject> appProjectFound = FakeDatabase.findProjectByName(projectName, FakeDatabase.getAppProjects());
+        Optional<IWebProject> webProjectFound = FakeDatabase.findProjectByName(projectName, FakeDatabase.getWebProjects());
 
-        if (projectFound.isPresent()) {
+        if (appProjectFound.isPresent()) {
             System.out.println("<--------- Projeto Encontrado ---------->\n");
             System.out.println(
-                            "Projeto: <" + projectFound.get().getName() + "> - <" + projectFound.get().getLevel() + ">\n" +
-                            "Custo: <" + projectFound.get().getCost() + ">\n" +
-                            "Gerente de Projetos: <" + projectFound.get().getManager() + ">\n");
+                            "Projeto: <" + appProjectFound.get().getName() + "> - <" +appProjectFound.get().getLevel() + ">\n" +
+                            "Custo: <" + appProjectFound.get().getCost() + ">\n" +
+                            "Gerente de Projetos: <" + appProjectFound.get().getManager() + ">\n"+
+                            "Tamanho do projeto: <" + appProjectFound.get().getTamanho() + ">\n"+
+                            "Plataforma do projeto: <" + appProjectFound.get().getPlataforma() + ">\n");
+            System.out.println("<--------- Projeto Encontrado ---------->\n");
+
+        } else if (webProjectFound.isPresent()) {
+            System.out.println("<--------- Projeto Encontrado ---------->\n");
+            System.out.println(
+                            "Projeto: <" + webProjectFound.get().getName() + "> - <" +webProjectFound.get().getLevel() + ">\n" +
+                            "Custo: <" + webProjectFound.get().getCost() + ">\n" +
+                            "Gerente de Projetos: <" + webProjectFound.get().getManager() + ">\n"+
+                            "Linguagem de programação: <" + webProjectFound.get().getProgrammingLanguage() + ">\n"+
+                            "Banco de dados: <" + webProjectFound.get().getDb() + ">\n");
             System.out.println("<--------- Projeto Encontrado ---------->\n");
         } else {
             System.out.println("Projeto não encontrado. Tente novamento com outro nome ou incluir um novo.");
