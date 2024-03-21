@@ -12,6 +12,10 @@ public class CreateProject implements IAction {
     public CreateProject() {
     }
 
+    public CreateProject(Manager manager) {
+        this.manager = manager;
+    }
+
     @Override
     public void run() {
         System.out.println("----- Qual o nome do gerente? ------");

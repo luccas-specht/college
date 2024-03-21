@@ -11,7 +11,6 @@ public class ListProjects implements IAction {
     private List<IWebProject> webProjects = FakeDatabase.getWebProjects();
 
     public ListProjects() {
-
     }
 
     private void printAppProjects() {
@@ -20,8 +19,8 @@ public class ListProjects implements IAction {
                     "Projeto: <" + element.getName() + "> - <" + element.getLevel() + ">\n" +
                     "Custo: <" + element.getCost() + ">\n" +
                     "Gerente de Projetos: <" + element.getManager() + ">\n"+
-                    "Tamanho do projeto: <" + element.getTamanho() + ">\n"+
-                    "Plataforma do projeto: <" + element.getPlataforma() + ">\n");
+                    "Tamanho do projeto: <" + element.getSize() + ">\n"+
+                    "Plataforma do projeto: <" + element.getPlataform() + ">\n");
         });
     }
 
@@ -36,7 +35,8 @@ public class ListProjects implements IAction {
         });
     }
 
-    private void checkIfThereAreProjectsToPrint() {
+    @Override
+    public void run() {
         if (!appProjects.isEmpty() || !webProjects.isEmpty()) {
             System.out.println("<vvvvvvvv Lista de projetos cadastrados: vvvvvvvv>\n");
             printAppProjects();
@@ -45,12 +45,5 @@ public class ListProjects implements IAction {
         } else {
             System.out.println("<--------- Sem projetos: ---------->\n");
         }
-    }
-
-    @Override
-    public void run() {
-
-        checkIfThereAreProjectsToPrint();
-
     }
 }

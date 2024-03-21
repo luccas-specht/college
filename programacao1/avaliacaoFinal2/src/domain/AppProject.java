@@ -1,35 +1,35 @@
 package domain;
 
 public class AppProject extends Project implements IAppProject {
-    private String plataforma;
+    private String plataform;
 
-    private float tamanho;
+    private float size;
 
-    public AppProject(String nome, Level level, double custo, Manager manager, String plataforma, float tamanho) {
-        super(nome, level, custo, manager);
-        if (tamanho <= 0) {
+    public AppProject(String nome, Level level, double cost, Manager manager, String plataform, float size) {
+        super(nome, level, cost, manager);
+        if (size <= 0) {
             throw new RuntimeException("tamanho deve ser maior que zero");
         }
-        this.plataforma = plataforma;
-        this.tamanho = tamanho;
+        this.plataform = plataform;
+        this.size = size;
     }
 
     public AppProject() {
     }
 
-    public String getPlataforma() {
-        return plataforma;
+    public String getPlataform() {
+        return plataform;
     }
 
-    public void setPlataforma(String plataforma) {
-        this.plataforma = plataforma;
+    public void setPlataform(String plataform) {
+        this.plataform = plataform;
     }
 
-    public float getTamanho() {
-        return tamanho;
+    public float getSize() {
+        return size;
     }
 
-    public void setTamanho(float tamanho) {
-        this.tamanho = tamanho;
+    public void setTamanho(float size) {
+        this.size = size;
     }
 }

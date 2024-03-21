@@ -25,8 +25,8 @@ public class GetProject implements IAction {
                             "Projeto: <" + appProjectFound.get().getName() + "> - <" +appProjectFound.get().getLevel() + ">\n" +
                             "Custo: <" + appProjectFound.get().getCost() + ">\n" +
                             "Gerente de Projetos: <" + appProjectFound.get().getManager() + ">\n"+
-                            "Tamanho do projeto: <" + appProjectFound.get().getTamanho() + ">\n"+
-                            "Plataforma do projeto: <" + appProjectFound.get().getPlataforma() + ">\n");
+                            "Tamanho do projeto: <" + appProjectFound.get().getSize() + ">\n"+
+                            "Plataforma do projeto: <" + appProjectFound.get().getPlataform() + ">\n");
             System.out.println("<--------- Projeto Encontrado ---------->\n");
 
         } else if (webProjectFound.isPresent()) {
@@ -39,7 +39,7 @@ public class GetProject implements IAction {
                             "Banco de dados: <" + webProjectFound.get().getDb() + ">\n");
             System.out.println("<--------- Projeto Encontrado ---------->\n");
         } else {
-            System.out.println("Projeto não encontrado. Tente novamento com outro nome ou incluir um novo.");
+            System.out.println("Projeto não encontrado. Tente novamente com outro nome ou incluia um novo.");
         }
     }
 }

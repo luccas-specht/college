@@ -2,7 +2,7 @@ package useCase;
 
 import java.util.Scanner;
 
-public final class SingletonScanner {
+public abstract class SingletonScanner {
     private static Scanner scanner;
 
     public static Scanner getScanner() {
